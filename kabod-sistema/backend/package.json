@@ -1,0 +1,13 @@
+{
+  "name": "kabod-api",
+  "version": "1.0.0",
+  "description": "API REST del proyecto Kabod S.A.S. (inventario y facturación) - GA7-220501096-AA5-EV03",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2"
+  }
+}

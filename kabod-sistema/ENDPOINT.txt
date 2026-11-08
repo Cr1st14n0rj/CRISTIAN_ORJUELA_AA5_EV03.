@@ -1,0 +1,31 @@
+ENDPOINTS - Servicio web Kabod (GA7-220501096-AA5-EV03)
+
+URL base: http://localhost:8081
+Todas las rutas (salvo /salud, /login y /registro) requieren el encabezado
+Authorization: Bearer <token>. El token se obtiene en /login.
+
+--- EV01 (siguen funcionando igual) ---
+POST /registro   { "usuario": "juan", "contrasena": "1234" }        201 / 400 / 409
+POST /login      { "usuario": "inventario", "contrasena": "inv123" } 200 / 400 / 401
+
+--- Inventario (rol inventario) ---
+GET|POST            /productos          (lectura tambien para facturacion)
+GET|PUT|DELETE      /productos/:codigo
+GET|POST            /movimientos        (Entrada suma stock, Salida resta)
+DELETE              /movimientos/:id
+GET|POST            /proveedores
+GET|PUT|DELETE      /proveedores/:nit
+GET                 /alertas
+
+--- Facturacion (rol facturacion) ---
+GET|POST            /clientes
+GET|PUT|DELETE      /clientes/:nit
+GET|POST            /facturas
+GET|DELETE          /facturas/:numero
+PATCH               /facturas/:numero/pagar
+GET                 /reportes/ventas
+
+--- Publica ---
+GET                 /salud
+
+Detalle de campos, reglas y respuestas: docs/SERVICIOS.md
